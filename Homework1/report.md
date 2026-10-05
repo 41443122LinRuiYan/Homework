@@ -243,7 +243,7 @@ int main(void) {
 | 測試三 | $m = 4, n = 1$ | 65533 | 65533 |
 | 測試四 | $m = -1, n = -3$ | -1（防呆攔截） | -1（防呆攔截） |
 ###### 小黑窗
-
+![image alt](https://github.com/41443122LinRuiYan/Homework/blob/9c403283d2661b44579704583d7463330d1518a4/Homework1/AckermannOutput.png)
 ###### 編譯與執行指令
 ```shell
 $ g++ -std=c++17 -o ackermann ackermann.cpp
