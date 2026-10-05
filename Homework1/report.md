@@ -290,7 +290,7 @@ m或n其中一值為負值,此結果防止無窮迴圈(無限堆疊)。[原因:�
 | :--- | :--- | :--- | :--- | :--- |
 | 測試一 | {'a', 'b', 'c'} | 3 | 8 | { (), (c), (b), (b,c), (a), (a,c), (a,b), (a,b,c) } |
 ###### 小黑窗
-
+![image alt](https://github.com/41443122LinRuiYan/Homework/blob/2cadfa15f8f955d555c01123b840c181a60e347e/Homework1/PowersetOutput.png)
 ###### 編譯與執行指令
 ```shell
 $ g++ -std=c++17 -o powerset powerset.cpp
