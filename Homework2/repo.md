@@ -218,33 +218,33 @@ $ .\Polynomial.exe
 
 此函式主要處理新增多項式項目的邏輯與動態陣列的擴充：
 
-* if (terms == capacity)：利用此段程式檢測空間是否充足。
+if (terms == capacity)：利用此段程式檢測空間是否充足。
 
-* capacity *= 2;`：使 `termArray 的容量加倍。
+capacity *= 2;`：使 `termArray 的容量加倍。
 
-* Term* temp = new Term[capacity];：定義新的動態空間。
+Term* temp = new Term[capacity];：定義新的動態空間。
 
-* copy(termArray, termArray + terms, temp);：把舊陣列內容複製到新陣列。
+copy(termArray, termArray + terms, temp);：把舊陣列內容複製到新陣列。
 
-* delete[] termArray;：釋放舊的陣列記憶體。
+delete[] termArray;：釋放舊的陣列記憶體。
 
-* termArray = temp;：把新的記憶體位址指向原陣列。
+termArray = temp;：把新的記憶體位址指向原陣列。
 
-* termArray[terms].coef = theCoeff;：把係數傳入係數陣列。
+termArray[terms].coef = theCoeff;：把係數傳入係數陣列。
 
-* termArray[terms++].exp = theExp;：把指數傳入指數陣列後，把 terms 加 1。
+termArray[terms++].exp = theExp;：把指數傳入指數陣列後，把 terms 加 1。
 
 2. 函式 Polynomial Add(Polynomial poly);
 
 此函式處理兩個多項式的相加：
 
-**while 迴圈**：當 a 和 b 的 terms 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
+while 迴圈：當 a 和 b 的 terms 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
 
-**if 條件**：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
+if 條件：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
 
-**else if 條件**：判斷是否 `(*this)` 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 c。
+else if 條件：判斷是否 `(*this)` 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 c。
 
-**else** **條件**：判斷是否 `(*this)` 的指數大於 b(x)，如果大於，則把此項係數與指數加進物件 c。
+else 條件：判斷是否 `(*this)` 的指數大於 b(x)，如果大於，則把此項係數與指數加進物件 c。
 
 接著處理剩餘項目：因多項式較短一方使 `while` 迴圈提前結束，須將所剩下的項加入物件。
 
