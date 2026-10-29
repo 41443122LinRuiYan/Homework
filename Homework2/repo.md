@@ -205,13 +205,13 @@ int main(void) {
 $ g++ Polynomial.cpp -std=c++17 -o Polynomial.exe
 $ .\Polynomial.exe
 
-##### 結論
+#### 結論
 1. 程式能夠存入多項式的係數與指數。
 2. 程式能夠進行加法以及乘法。
 3. 程式能夠輸入數值f帶入多項式a(x)。
 4. 此程式輸入多載運算子,不可判別輸入為2x^2+x+1,如果需要判別此種輸入需引入<string>與 <sstream>來幫助我們重新改寫輸入多載運算子。
 
-#####申論及開發報告
+#### 申論及開發報告
 類別 Polynomial 函式的開發細節
 
 1. 函式 void NewTerm(const float theCoeff, const int theExp);
