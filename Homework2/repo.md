@@ -212,72 +212,73 @@ $ .\Polynomial.exe
 4. 此程式輸入多載運算子,不可判別輸入為2x^2+x+1,如果需要判別此種輸入需引入`<string>` 與 `<sstream>`來幫助我們重新改寫輸入多載運算子。
 
 申論及開發報告
-類別 Polynomial 函式的開發細節:
- 
-1. ` 函式void NewTerm(const float theCoeff, const int theExp); `->
-`if (terms == capacity)` 利用此段程式檢測空間是否充足
-`capacity *= 2;` 使termArray的容量加倍
-`Term* temp = new Term [capacity];` 定義新的動態空間
-`copy(termArray, termArray + terms, temp);` 把舊陣列內容複製到新陣列
-`delete[] termArray;` 釋放舊的陣列記憶體
-`termArray = temp;` 把新的記憶體位址指向原陣列
-`termArray[terms].coef = theCoeff;` 把係數傳入,係數陣列
-`termArray[terms++].exp = theExp;` 把指數傳入,指數陣列後把terms+1;
+# 類別 Polynomial 函式的開發細節
 
-2. `函式Polynomial Add(Polynomial poly);`->
-while:當a和b的terms,其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束
+## 1. 函式 `void NewTerm(const float theCoeff, const int theExp);`
+此函式主要處理新增多項式項目的邏輯與動態陣列的擴充：
 
-if:當指數一樣時,係數相加。如果此項係數為零則不把此項列入物件c。
+*   `if (terms == capacity)`：利用此段程式檢測空間是否充足。
+*   `capacity *= 2;`：使 `termArray` 的容量加倍。
+*   `Term* temp = new Term[capacity];`：定義新的動態空間。
+*   `copy(termArray, termArray + terms, temp);`：把舊陣列內容複製到新陣列。
+*   `delete[] termArray;`：釋放舊的陣列記憶體。
+*   `termArray = temp;`：把新的記憶體位址指向原陣列。
+*   `termArray[terms].coef = theCoeff;`：把係數傳入係數陣列。
+*   `termArray[terms++].exp = theExp;`：把指數傳入指數陣列後，把 `terms` 加 $1$。
 
-else if:判斷是否(*this)的指數小於b(x),如果小於則把此項係數與指數加進物件c。
+---
 
-else:判斷是否(*this)的指數大於b(x),如果大於則把此項係數與指數加進物件c。
+## 2. 函式 `Polynomial Add(Polynomial poly);`
+此函式處理兩個多項式的相加：
 
-接著把兩多項式,因多項式較短一方使 while 迴圈提前結束,所剩下的項加入物件。
+*   **`while` 迴圈**：當 `a` 和 `b` 的 `terms` 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
+*   **`if` 條件**：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 `c`。
+*   **`else if` 條件**：判斷是否 `(*this)` 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 `c`。
+*   **`else` 條件**：判斷是否 `(*this)` 的指數大於 `b(x)`，如果大於，則把此項係數與指數加進物件 `c`。
 
-Ex:
+接著處理剩餘項目：因多項式較短一方使 `while` 迴圈提前結束，須將所剩下的項加入物件。
 
-a(x)=3x^3+2x^2+5 b(x)=-3x^3
+### 範例說明 (Ex)
+假設有兩個多項式：
+$a(x) = 3x^3 + 2x^2 + 5$
+$b(x) = -3x^3$
 
-->當指數一樣時,係數相加。如果此項係數為零則不把此項列入物件c。
+1.  當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 `c`。
+2.  因 `bPos == 1` 所以跳出迴圈。
+3.  $A$ (`*this`) 還有剩下的項（$2x^2$ 和 $5$）還沒處理。
+4.  程式往下走，進入第一個 `for` 迴圈（`for (; aPos < terms; aPos++)`），把 $A$ 剩下的 $2x^2$ 跟 $5$ 直接加進結果多項式 `c` 裡面。
+5.  第二個 `for` 迴圈不滿足條件，直接跳過。
 
-->因 bPos==1 所以跳出迴圈
+---
 
-->A(*this) 還有剩下的項(2x^2和5)還沒處理。
+## 3. 函式 `Polynomial Mulit(Polynomial poly);`
+多項式相乘後的總項數為 $aPos \times bPos$，所以使用巢狀迴圈 (`for-for`)，並使用前面所寫的 `Add` 函式把每部分相乘的項式相加（運用 `c = c.Add(temp)`，類似 `c = c + temp`）。
 
-->程式往下走,進入第一個for 迴圈(`for (; aPos < terms; aPos++)`),把A剩下的2x^2跟5直接加進結果多項式c裡面。
-
-->第二個 for 迴圈不滿足條件,直接跳過。
-
-3. `函式 Polynomial Mulit (Polynomial poly);`->
-多項式相乘後的總項數 aPos*bPos,所以使巢狀迴圈for-for,使用前面所寫的Add 函式把每部分相乘的項式相加(運用 `c=c.Add(temp)` 類似 `c=c+temp`)。(如下圖三)
-#### 圖三:
-
+#### 圖三：
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/6d63ad515b7067ce730cdeb0d9e2f577f08f6b06/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
 
+---
 
-4. `函式float Eval(float f);`->
-設定初值 `c=0`;
-運用 for 迴圈走訪(*this)的每一項
-運用`<cmath>`裡的pow來解決次方問題
-用 `c+=(termArray[i].coef*pow(f,termArray[i].exp));` 儲存累加結果。
-回傳結果。
+## 4. 函式 `float Eval(float f);`
+此函式用於計算多項式代入數值後的結果：
 
-多載運算子的細節:
+1.  設定初值 `c = 0;`
+2.  運用 `for` 迴圈走訪 `(*this)` 的每一項。
+3.  運用 `<cmath>` 裡的 `pow` 來解決次方問題。
+4.  用 `c += (termArray[i].coef * pow(f, termArray[i].exp));` 儲存累加結果。
+5.  回傳結果。
 
-**輸入’>>’ 運算子**
+---
 
-先問使用者要輸入幾項。
+## 5. 多載運算子的細節
 
-再依需輸入此項係數與指數,以空格隔開。
+### 輸入 `>>` 運算子
+1. 先問使用者要輸入幾項。
+2. 再依需輸入此項係數與指數，以空格隔開。
+3. 且把輸入的數值存進物件 `a`。
 
-且把輸入的數值存進物件a。
-
-**輸出’<<’ 運算子**
-
-先問使用者要輸入幾項。
-
-再依需輸入此項係數與指數,以空格隔開。
-
-且把輸入的數值存進物件a。
-
+### 輸出 `<<` 運算子
+1. 先問使用者要輸入幾項。
+2. 再依需輸入此項係數與指數，以空格隔開。
+3. 且把輸入的數值存進物件 `a`。
+*(註：原文件中的輸出運算子敘述與輸入運算子相同，若為筆誤建議後續修改為輸出的邏輯)*
