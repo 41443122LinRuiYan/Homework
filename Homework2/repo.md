@@ -212,7 +212,7 @@ int main(void) {
 | --- | --- | --- |
 | NewTerm | 空間足夠時 $O(1)$/最差 $O(m)$ | 一般 $O(1)$/擴充時 $O(m)$ |
 | Add | $O(m+n)$ 跟 terms, b.terms 有關 | $O(m+n)$ |
-| Mulit | 最差 $O(m^2n)$ 會有 $m^2$ 跟函式中運用到Add() 有關/最佳 $O(mn)$ | $O(mn)$(未釋放記憶體為 $O(m^2n)$) |
+| Mulit | 最差 $O(m^2n)$ 會有 $m^2$ 跟函式中運用到Add() 有關/最佳 $O(mn)$ | $O(mn)$/未釋放記憶體為 $O(m^2n)$ |
 | Eval | $O(m)$ 單迴圈 | $O(1)$:回傳的c值 |
 | operator>> | $O(m)$ 單迴圈 | $O(m)$:有幾項就多大 |
 | operator<< | $O(m)$ 單迴圈  | $O(1)$:回傳的 output |
