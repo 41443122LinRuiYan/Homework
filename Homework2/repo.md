@@ -256,7 +256,7 @@ a(x)=3x^3+2x^2+5 b(x)=-3x^3
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/6d63ad515b7067ce730cdeb0d9e2f577f08f6b06/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
 
 
-4. **函式float Eval(float f);->**
+4. _函式float Eval(float f);->_
 設定初值 `c=0`;
 運用 for 迴圈走訪(*this)的每一項
 運用`<cmath>`裡的pow來解決次方問題
