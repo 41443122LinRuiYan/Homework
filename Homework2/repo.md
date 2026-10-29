@@ -8,8 +8,8 @@
 #### 圖二:
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/3febce75d2697e21e7ec01b39c00d6766687233a/Homework2/%E5%9C%96%E7%89%87%E4%BA%8C.png)
 
-1.實作多項式(Polynomial) 類別,其抽象資料型別(ADT)和私有資料成員分別如圖1和圖2所示。
-2.撰寫 C++ 函式來輸入和輸出表示為圖2的多項式。你的函式應該多載(overload) `<<`和`>>` 運算子。
+1. 實作多項式(Polynomial) 類別,其抽象資料型別(ADT)和私有資料成員分別如圖1和圖2所示。
+2. 撰寫 C++ 函式來輸入和輸出表示為圖2的多項式。你的函式應該多載(overload) `<<`和`>>` 運算子。
 
 ##### 解題策略:
 1.函式實作順序:NewTerm(擴增空間大小)>Add>Mulit,而Eval 先做或者後做皆可。
@@ -230,7 +230,7 @@ a(x)帶入3得:164
 #### 申論及開發報告
 類別 Polynomial 函式的開發細節:
 
-函式 `void NewTerm(const float theCoeff, const int theExp);` ->
+1.函式 `void NewTerm(const float theCoeff, const int theExp);` ->
 `if (terms == capacity)` 利用此段程式檢測空間是否充足
 `capacity *= 2;` 使termArray的容量加倍
 `Term* temp = new Term [capacity];` 定義新的動態空間
@@ -240,7 +240,7 @@ a(x)帶入3得:164
 `termArray[terms].coef = theCoeff;` 把係數傳入,係數陣列
 `termArray[terms++].exp = theExp;` 把指數傳入,指數陣列後把terms+1;
 
-函式 `Polynomial Add(Polynomial poly);` ->
+2.函式 `Polynomial Add(Polynomial poly);` ->
 while:當a和b的terms,其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束
 if:當指數一樣時,係數相加。如果此項係數為零則不把此項列入物件c。
 else if:判斷是否(*this)的指數小於b(x),如果小於則把此項係數與指數加進物件c。
@@ -254,7 +254,7 @@ a(x)=3x^3+2x^2+5 b(x)=-3x^3
 ->程式往下走,進入第一個for 迴圈(`for (; aPos < terms; aPos++)`),把A剩下的2x^2跟5直接加進結果多項式c裡面。
 ->第二個 for 迴圈不滿足條件,直接跳過。
 
-函式 `Polynomial Mulit (Polynomial poly);` ->
+3.函式 `Polynomial Mulit (Polynomial poly);` ->
 多項式相乘後的總項數 aPos*bPos,所以使巢狀迴圈for-for,使用前面所寫的Add 函式把每部分相乘的項式相加(運用 `c=c.Add(temp)` 類似 `c=c+temp`)。(如下圖三)
 #### 圖三:
 
