@@ -270,7 +270,7 @@ b(x) = -3x^3
 
 #### 圖三：
 <img width="580" height="805" alt="image" src="https://github.com/user-attachments/assets/282e7a8d-f079-40cf-979d-3f487a8f602c" />
-
+```
 4. 函式 float Eval(float f);
 
 此函式用於計算多項式代入數值後的結果：
@@ -297,7 +297,6 @@ b(x) = -3x^3
 
 輸出 << 運算子
 
-1. 先問使用者要輸入幾項。
 
 2. 再依需輸入此項係數與指數，以空格隔開。
 
