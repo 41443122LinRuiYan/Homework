@@ -236,7 +236,7 @@ $ .\Polynomial.exe
 
 在寫這些程式時比較需要注意的地方有 乘法分配律時，兩係數相乘會等於0需要跳過，不然可能會破壞多項式的結構
 #### 申論及開發報告
-類別 Polynomial 函式的開發細節
+**類別 Polynomial 函式的開發細節**
 
 1. **函式 void NewTerm(const float theCoeff, const int theExp);**
 
@@ -276,9 +276,9 @@ b(x) = -3x^3
 
 A (*this) 還有剩下的項（2x^2 和 5）還沒處理。
 
-程式往下走，進入第一個 for 迴圈（for (; aPos < terms; aPos++)），把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
+程式往下走，進入第一個 *for* 迴圈for (; aPos < terms; aPos++)，把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
 
-第二個 for 迴圈不滿足條件，直接跳過。
+第二個 *for* 迴圈不滿足條件，直接跳過。
 
 3. **函式 Polynomial Mulit(Polynomial poly);**
 
