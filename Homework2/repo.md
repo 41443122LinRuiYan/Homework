@@ -205,7 +205,7 @@ int main(void) {
 $ g++ Polynomial.cpp -std=c++17 -o Polynomial.exe
 $ .\Polynomial.exe
 
-##### 結論
+#### 結論
 1. 程式能夠存入多項式的係數與指數。
 2. 程式能夠進行加法以及乘法。
 3. 程式能夠輸入數值f帶入多項式a(x)。
