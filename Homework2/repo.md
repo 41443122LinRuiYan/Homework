@@ -149,7 +149,7 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
     for (int i = 0; i < a.terms; i++) {
         //處理連接的正負號
         if ((i > 0) && a.termArray[i].coef > 0 &&temp!=i) output << "+";//如果是第一項係數則不需要加上正號
-        else if (a.termArray[i].coef < 0 && temp != i) output << " - ";
+        else if (a.termArray[i].coef < 0 && temp != i) output << "-";
         //印出係數的數字,使用abs 取絕對值去除多餘的負號)
         if (abs(a.termArray[i].coef) != 0) {
             output << abs(a.termArray[i].coef);
