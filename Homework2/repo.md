@@ -197,13 +197,15 @@ int main(void) {
 | operator<< | $O(m)$ 單迴圈  | $O(1)$:回傳的 output |
 
 #### 測試與驗證
-#### 測試案例
-#### 小黑窗
+##### 測試案例
+##### 小黑窗
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/7352e9f582af3db7a708dfe0dc375b4f03c03524/Homework2/%E5%9C%96%E7%89%87%E5%9B%9B.png)
-#### 編譯與執行指令
+
+##### 編譯與執行指令
 ```shell
 $ g++ Polynomial.cpp -std=c++17 -o Polynomial.exe
 $ .\Polynomial.exe
+```
 
 ##### 結論
 1. 程式能夠存入多項式的係數與指數。
@@ -211,13 +213,13 @@ $ .\Polynomial.exe
 3. 程式能夠輸入數值f帶入多項式a(x)。
 4. 此程式輸入多載運算子,不可判別輸入為2x^2+x+1,如果需要判別此種輸入需引入<string>與 <sstream>來幫助我們重新改寫輸入多載運算子。
 
-##### 申論及開發報告
+#### 申論及開發報告
 類別 Polynomial 函式的開發細節
 
 1. 函式 void NewTerm(const float theCoeff, const int theExp);
 
 此函式主要處理新增多項式項目的邏輯與動態陣列的擴充：
-```
+
 if (terms == capacity)：利用此段程式檢測空間是否充足。
 
 capacity *= 2;：使 termArray 的容量加倍。
@@ -233,12 +235,10 @@ termArray = temp;：把新的記憶體位址指向原陣列。
 termArray[terms].coef = theCoeff;：把係數傳入係數陣列。
 
 termArray[terms++].exp = theExp;：把指數傳入指數陣列後，把 terms 加 1。
-```
 
 2. 函式 Polynomial Add(Polynomial poly);
 
 此函式處理兩個多項式的相加：
-```
 
 while 迴圈：當 a 和 b 的 terms 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
 
@@ -265,16 +265,18 @@ b(x) = -3x^3
 4. 程式往下走，進入第一個 for 迴圈（for (; aPos < terms; aPos++)），把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
 
 5. 第二個 for 迴圈不滿足條件，直接跳過。
-```
+
 3. 函式 Polynomial Mulit(Polynomial poly);
 
 多項式相乘後的總項數為 aPos * bPos，所以使用巢狀迴圈 (for-for)，並使用前面所寫的 Add 函式把每部分相乘的項式相加（運用 c = c.Add(temp)，類似 c = c + temp）。
+
 ##### 圖三：
 <img width="580" height="805" alt="image" src="https://github.com/user-attachments/assets/282e7a8d-f079-40cf-979d-3f487a8f602c" />
+
 ##### 4. 函式 float Eval(float f);
 
 此函式用於計算多項式代入數值後的結果：
-```
+
 1. 設定初值 c = 0;
 
 2. 運用 for 迴圈走訪 (*this) 的每一項。
@@ -286,7 +288,7 @@ b(x) = -3x^3
 5. 回傳結果。
 
 5. 多載運算子的細節
-```
+
 輸入 >> 運算子
 
 1. 先問使用者要輸入幾項。
@@ -297,6 +299,7 @@ b(x) = -3x^3
 
 輸出 << 運算子
 
+1. 先問使用者要輸入幾項。
 
 2. 再依需輸入此項係數與指數，以空格隔開。
 
