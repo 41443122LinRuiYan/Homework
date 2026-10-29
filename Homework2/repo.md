@@ -47,19 +47,19 @@ public:
     Polynomial() {
         capacity = 1;
         terms = 0;
-        termArray = new Term [capacity];
+        termArray = new Term[capacity];
     };
-    Polynomial Add (Polynomial poly);//多項式加法
+    Polynomial Add(Polynomial poly);//多項式加法
     void NewTerm(const float theCoeff, const int theExp);//termArry 擴充空間大小
     Polynomial Mulit(Polynomial poly);//多項式乘法
     float Eval(float f); //將數值f代入多項式中進行計算,並回傳其結果
     ~Polynomial() {};
 };
 
-void Polynomial::NewTerm (const float theCoeff, const int theExp) {
+void Polynomial::NewTerm(const float theCoeff, const int theExp) {
     if (terms == capacity) {//檢測空間是否充足
         capacity *= 2;//termArray的容量加倍
-        Term* temp = new Term [capacity];
+        Term* temp = new Term[capacity];
         copy(termArray, termArray + terms, temp);//把舊陣列內容複製到新陣列
         delete[] termArray; //釋放舊的陣列記憶體
         termArray = temp; //把新的記憶體位址指向原陣列
@@ -132,7 +132,7 @@ istream& operator>>(istream& input, Polynomial& a) {
     for (int i = 0; i < numTerms; i++) {
         float coef;
         int exp;
-        cout << "輸入第" << i+1 << "項的係數與指數(用空格隔開):";
+        cout << "輸入第" << i + 1 << "項的係數與指數(用空格隔開):";
         input >> coef >> exp;
         a.NewTerm(coef, exp);
     }
@@ -140,19 +140,30 @@ istream& operator>>(istream& input, Polynomial& a) {
 }
 
 ostream& operator<<(ostream& output, const Polynomial& a) {
+    int temp = 0;
     if (a.terms == 0) {
         output << "0";
         return output;
     }
+   
     for (int i = 0; i < a.terms; i++) {
         //處理連接的正負號
-        if ((i > 0) && a.termArray[i].coef > 0) output << "+";//如果是第一項係數則不需要加上正號
-        else if (a.termArray[i].coef < 0) output << " - ";
+        if ((i > 0) && a.termArray[i].coef > 0 &&temp!=i) output << "+";//如果是第一項係數則不需要加上正號
+        else if (a.termArray[i].coef < 0 && temp != i) output << " - ";
         //印出係數的數字,使用abs 取絕對值去除多餘的負號)
-        output << abs(a.termArray[i].coef);
+        if (abs(a.termArray[i].coef) != 0) {
+            output << abs(a.termArray[i].coef);
+        }
+        else {
+            temp++;
+        }
+        
         //判斷指數是否大於0
-        if (a.termArray[i].exp > 0) {
+        if (a.termArray[i].exp > 0 && abs(a.termArray[i].coef) != 0) {
             output << "x^" << a.termArray[i].exp;
+        }
+        else if (a.termArray[i].exp < 0 && abs(a.termArray[i].coef) != 0) {
+            output << "/" << "x^" << abs(a.termArray[i].exp);
         }
     }
     return output;
@@ -160,28 +171,31 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
 
 int main(void) {
     Polynomial a, b, c, d;
-    float e, f;
+    float e, f, g, h;
     cout << "--- 輸入a(x)多項式---" << endl;
     cin >> a;
     cout << "a(x)=" << a << endl;
     cout << endl;
-    
+
     cout << "--- 輸入b(x)多項式---" << endl;
     cin >> b;
     cout << "b(x)=" << b << endl;
     cout << endl;
-    
+
     cout << "--- 輸入帶入a(x)多項式的數字f---" << endl;
     cin >> f;//多載運算子已經定義輸入資料型態需為 Polynomial
     cout << endl;
-    
+
     c = a.Add(b);
     d = a.Mulit(b);
     e = a.Eval(f);
-    
+    g = c.Eval(f);
+    h = d.Eval(f);
     cout << "a(x)帶入" << f << "得:" << e << endl;
     cout << "相加結果 a(x)+b(x)=" << c << endl;
     cout << "相乘結果 a(x)*b(x)=" << d << endl;
+    cout << "相加結果帶入 c(x)=" << g << endl;
+    cout << "相乘結果帶入 d(x)=" << h << endl;
     return 0;
 }
 ```
