@@ -294,7 +294,8 @@ A (*this) 還有剩下的項（2x^2 和 5）還沒處理。
 多項式相乘後的總項數為 aPos * bPos，所以使用巢狀迴圈 (for-for)，並使用前面所寫的 Add 函式把每部分相乘的項式相加（運用 c = c.Add(temp)，類似 c = c + temp）。
 
 ##### 圖三：
-<img width="580" height="805" alt="image" src="https://github.com/user-attachments/assets/282e7a8d-f079-40cf-979d-3f487a8f602c" />
+<img width="566" height="842" alt="image" src="https://github.com/user-attachments/assets/d8004590-1462-4df3-ad96-691e2f4cfab6" />
+
 
 ##### 4. 函式 float Eval(float f);
 
