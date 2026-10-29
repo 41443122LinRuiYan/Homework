@@ -200,7 +200,7 @@ int main(void) {
 ##### 測試案例
 ##### 小黑窗
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/7352e9f582af3db7a708dfe0dc375b4f03c03524/Homework2/%E5%9C%96%E7%89%87%E5%9B%9B.png)
-###### 編譯與執行指令
+##### 編譯與執行指令
 ```shell
 $ g++ Polynomial.cpp -std=c++17 -o Polynomial.exe
 $ .\Polynomial.exe
