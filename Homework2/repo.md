@@ -159,7 +159,7 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
             if (a.termArray[i].coef < 0) output << "-";
             First = true;
         }
-        //印出係數的數字,使用abs 取絕對值去除多餘的負號)
+        //印出係數的數字,使用abs 取絕對值去除多餘的負號
         output << abs(a.termArray[i].coef);
        
         //判斷指數是否大於0,如果指數<0則切換輸出樣式
