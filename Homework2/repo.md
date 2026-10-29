@@ -220,7 +220,8 @@ int main(void) {
 #### 測試與驗證
 ##### 測試案例
 ##### 小黑窗
-![image alt](https://github.com/41443122LinRuiYan/Homework/blob/7352e9f582af3db7a708dfe0dc375b4f03c03524/Homework2/%E5%9C%96%E7%89%87%E5%9B%9B.png)
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/8c545296-cd2c-4a8a-ab55-2e0605cad691" />
+
 
 ##### 編譯與執行指令
 ```shell
