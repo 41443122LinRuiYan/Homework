@@ -3,40 +3,10 @@
 
 #### 解題說明
 圖一:
-```cpp
-class Polynomial {
-// p(x)=a_0x^{e_0} + ... + a_nx^{e_n}; a set of ordered pairs of <e_i, a_i>.
-// where a_i is a nonzero float coefficient and e_i is a non-negative integer exponent.
-public:
-    Polynomial();
-    // Construct the polynomial p(x)=0.
-    Polynomial Add(Polynomial poly);
-    // Return the sum of the polynomials *this and poly.
-    Polynomial Mult(Polynomial poly);
-    // Return the product of the polynomials *this and poly.
-    float Eval(float f);
-    // Evaluate the polynomial *this at f and return the result.
-};
-```
-Figure 1. Abstract data type of Polynomial class
+![image alt](https://github.com/41443122LinRuiYan/Homework/blob/3febce75d2697e21e7ec01b39c00d6766687233a/Homework2/%E5%9C%96%E7%89%87%E4%B8%80.png)
 
 圖二:
-```cpp
-class Polynomial; // forward declaration
-class Term {
-    friend Polynomial;
-private:
-    float coef; // coefficient
-    int exp;    // exponent
-};
-
-// The private data members of Polynomial are defined as follows:
-// private:
-//     Term *termArray; // array of nonzero terms
-//     int capacity;    // size of termArray
-//     int terms;       // number of nonzero terms
-```
-Figure 2. The private data members of Polynomial class
+![image alt](https://github.com/41443122LinRuiYan/Homework/blob/3febce75d2697e21e7ec01b39c00d6766687233a/Homework2/%E5%9C%96%E7%89%87%E4%BA%8C.png)
 
 1.實作多項式(Polynomial) 類別,其抽象資料型別(ADT)和私有資料成員分別如圖1和圖2所示。
 2.撰寫 C++ 函式來輸入和輸出表示為圖2的多項式。你的函式應該多載(overload) `<<`和`>>` 運算子。
