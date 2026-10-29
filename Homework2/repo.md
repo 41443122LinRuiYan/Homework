@@ -2,10 +2,10 @@
 作業二
 
 #### 解題說明
-####圖一:
+#### 圖一:
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/3febce75d2697e21e7ec01b39c00d6766687233a/Homework2/%E5%9C%96%E7%89%87%E4%B8%80.png)
 
-####圖二:
+#### 圖二:
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/3febce75d2697e21e7ec01b39c00d6766687233a/Homework2/%E5%9C%96%E7%89%87%E4%BA%8C.png)
 
 1.實作多項式(Polynomial) 類別,其抽象資料型別(ADT)和私有資料成員分別如圖1和圖2所示。
