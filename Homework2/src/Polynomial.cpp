@@ -83,8 +83,10 @@ Polynomial Polynomial::Mulit(Polynomial b) {
     Polynomial c;//相乘後的多項式
     //多項式相乘後的總項數為aPos*bPos,所以使用for-for,使用前面所寫的Add 函式把每部分相乘的多項式相加
     for (int aPos = 0; aPos < terms; aPos++) {//走訪目前多項式(*this)的每一項
-        Polynomial temp;//設回初值
+        
         for (int bPos = 0; bPos < b.terms; bPos++) {//走訪目前多項式b(x)的每一項
+            if (b.termArray[bPos].coef == 0) continue;//如果係數為0則跳過此次迴圈，否則多項式結構可能會壞例如(5)(3x^2+0x^1+5)
+            Polynomial temp;//設回初值
             float cf = termArray[aPos].coef * b.termArray[bPos].coef;
             int ep = termArray[aPos].exp + b.termArray[bPos].exp;
             if (cf != 0) {//如果係數是0,不執行
@@ -119,27 +121,43 @@ istream& operator>>(istream& input, Polynomial& a) {
 }
 
 ostream& operator<<(ostream& output, const Polynomial& a) {
-    if (a.terms == 0) {
-        output << "0";
-        return output;
-    }
+    bool First = false;
+    int temp = 0;
+   
     for (int i = 0; i < a.terms; i++) {
+        if (a.termArray[i].coef == 0) {//如果係數是 0，直接計數並跳過這一項。
+            temp++;
+            continue;
+        }
         //處理連接的正負號
-        if ((i > 0) && a.termArray[i].coef > 0) output << "+";//如果是第一項係數則不需要加上正號
-        else if (a.termArray[i].coef < 0) output << " - ";
+        if (First) {//判斷前面有沒有印出東西(是不是0)
+            if (a.termArray[i].coef > 0) output << "+";//如果是第一項係數則不需要加上正號
+            else if (a.termArray[i].coef < 0) output << "-";
+        }
+        else {//如果前面沒有印出東西(為0)且係數為負，需補上負號
+            if (a.termArray[i].coef < 0) output << "-";
+            First = true;
+        }
         //印出係數的數字,使用abs 取絕對值去除多餘的負號)
         output << abs(a.termArray[i].coef);
-        //判斷指數是否大於0
-        if (a.termArray[i].exp != 0) {
+       
+        //判斷指數是否大於0,如果指數<0則切換輸出樣式
+        if (a.termArray[i].exp > 0) {
             output << "x^" << a.termArray[i].exp;
         }
+        else if (a.termArray[i].exp < 0) {
+            output << "/" << "x^" << abs(a.termArray[i].exp);
+        }
+    }
+    if (temp == a.terms) {//迴圈全部跑完後，檢查是不是每一項都是 0
+        output << "0";
     }
     return output;
 }
 
 int main(void) {
     Polynomial a, b, c, d;
-    float e, f;
+    float e, f, g, h;
     cout << "--- 輸入a(x)多項式---" << endl;
     cin >> a;
     cout << "a(x)=" << a << endl;
@@ -157,8 +175,12 @@ int main(void) {
     c = a.Add(b);
     d = a.Mulit(b);
     e = a.Eval(f);
-
+    g = c.Eval(f);
+    h = d.Eval(f);
     cout << "a(x)帶入" << f << "得:" << e << endl;
     cout << "相加結果 a(x)+b(x)=" << c << endl;
     cout << "相乘結果 a(x)*b(x)=" << d << endl;
+    cout << "相加結果帶入f=" << g << endl;
+    cout << "相乘結果帶入f=" << h << endl;
     return 0;
+}
