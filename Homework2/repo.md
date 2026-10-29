@@ -237,7 +237,7 @@ $ .\Polynomial.exe
 #### 申論及開發報告
 類別 Polynomial 函式的開發細節
 
-1. 函式 void NewTerm(const float theCoeff, const int theExp);
+1. **函式 void NewTerm(const float theCoeff, const int theExp);**
 
 此函式主要處理新增多項式項目的邏輯與動態陣列的擴充：
 
@@ -257,7 +257,7 @@ termArray[terms].coef = theCoeff;：把係數傳入係數陣列。
 
 termArray[terms++].exp = theExp;：把指數傳入指數陣列後，把 terms 加 1。
 
-2. 函式 Polynomial Add(Polynomial poly);
+2. **函式 Polynomial Add(Polynomial poly);**
 
 此函式處理兩個多項式的相加：
 
@@ -265,11 +265,11 @@ while 迴圈：當 a 和 b 的 terms 其中一個走訪完時結束。代表多�
 
 if 條件：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
 
-else if 條件：判斷是否 (*this) 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 c。
+else if 條件：判斷是否 (*this) 的指數小於 b(x)，如果小於，則把此項係數與指數加進物件 c。
 
 else 條件：判斷是否 (*this) 的指數大於 b(x)，如果大於，則把此項係數與指數加進物件 c。
 
-接著處理剩餘項目：因多項式較短一方使 `while` 迴圈提前結束，須將所剩下的項加入物件。
+接著處理剩餘項目：因多項式較短一方使 while 迴圈提前結束，須將所剩下的項加入物件。
 
 範例說明 (Ex)
 
@@ -277,17 +277,19 @@ else 條件：判斷是否 (*this) 的指數大於 b(x)，如果大於，則把�
 a(x) = 3x^3 + 2x^2 + 5
 b(x) = -3x^3
 
-1. 當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
+當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
 
-2. 因 bPos == 1 所以跳出迴圈。
+因 bPos == 1 所以跳出迴圈。
 
-3. A (*this) 還有剩下的項（2x^2 和 5）還沒處理。
+A (*this) 還有剩下的項（2x^2 和 5）還沒處理。
 
-4. 程式往下走，進入第一個 for 迴圈（for (; aPos < terms; aPos++)），把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
+程式往下走，進入第一個 for 迴圈（for (; aPos < terms; aPos++)），把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
 
-5. 第二個 for 迴圈不滿足條件，直接跳過。
+第二個 for 迴圈不滿足條件，直接跳過。
 
-3. 函式 Polynomial Mulit(Polynomial poly);
+3. **函式 Polynomial Mulit(Polynomial poly);**
+
+如果係數為0則跳過此次迴圈，否則多項式結構可能會壞例如(5)*(3x^2+0x^1+5)。
 
 多項式相乘後的總項數為 aPos * bPos，所以使用巢狀迴圈 (for-for)，並使用前面所寫的 Add 函式把每部分相乘的項式相加（運用 c = c.Add(temp)，類似 c = c + temp）。
 
