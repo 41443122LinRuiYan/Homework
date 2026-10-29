@@ -223,7 +223,7 @@ int main(void) {
 #### 測試與驗證
 ##### 測試案例
 ##### 小黑窗
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/8c545296-cd2c-4a8a-ab55-2e0605cad691" />
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/859781a2-755f-4226-9ab6-4b967ec6cfa3" />
 
 
 ##### 編譯與執行指令
