@@ -230,7 +230,7 @@ a(x)帶入3得:164
 #### 申論及開發報告
 類別 Polynomial 函式的開發細節:
 
-1.函式 `void NewTerm(const float theCoeff, const int theExp);` ->
+1. **函式 void NewTerm(const float theCoeff, const int theExp);->**
 `if (terms == capacity)` 利用此段程式檢測空間是否充足
 `capacity *= 2;` 使termArray的容量加倍
 `Term* temp = new Term [capacity];` 定義新的動態空間
@@ -240,7 +240,7 @@ a(x)帶入3得:164
 `termArray[terms].coef = theCoeff;` 把係數傳入,係數陣列
 `termArray[terms++].exp = theExp;` 把指數傳入,指數陣列後把terms+1;
 
-2.函式 `Polynomial Add(Polynomial poly);` ->
+2. **函式Polynomial Add(Polynomial poly);->**
 while:當a和b的terms,其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束
 
 if:當指數一樣時,係數相加。如果此項係數為零則不把此項列入物件c。
@@ -272,7 +272,7 @@ a(x)=3x^3+2x^2+5 b(x)=-3x^3
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/6d63ad515b7067ce730cdeb0d9e2f577f08f6b06/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
 
 
-函式 `float Eval(float f);` ->
+4. **函式float Eval(float f);->**
 設定初值 `c=0`;
 運用 for 迴圈走訪(*this)的每一項
 運用`<cmath>`裡的pow來解決次方問題
