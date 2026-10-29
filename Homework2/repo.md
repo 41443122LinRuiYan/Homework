@@ -194,7 +194,7 @@ int main(void) {
 | Mulit | 最差 $O(m^2n)$ 會有 $m^2$ 跟函式中運用到Add() 有關/最佳 $O(mn)$ | $O(mn)$(未釋放記憶體為 $O(m^2n)$) |
 | Eval | $O(m)$ 單迴圈 | $O(1)$:回傳的c值 |
 | operator>> | $O(m)$ 單迴圈 | $O(m)$:有幾項就多大 |
-| operator<< | 單迴圈 $O(m)$ | $O(1)$:回傳的 output |
+| operator<< | $O(m)$ 單迴圈  | $O(1)$:回傳的 output |
 
 #### 測試與驗證
 ##### 測試案例
