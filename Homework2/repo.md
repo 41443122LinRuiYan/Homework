@@ -163,7 +163,7 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
         //印出係數的數字,使用abs取絕對值去除多餘的負號
         output << abs(a.termArray[i].coef);
        
-        //判斷指數是否大於0,如果指數<0則切換輸出樣式
+        //判斷指數是否大於0,如果指數小於0則切換輸出樣式
         if (a.termArray[i].exp > 0) {
             output << "x^" << a.termArray[i].exp;
         }
