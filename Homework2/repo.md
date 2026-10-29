@@ -140,31 +140,36 @@ istream& operator>>(istream& input, Polynomial& a) {
 }
 
 ostream& operator<<(ostream& output, const Polynomial& a) {
+    bool First = false;
     int temp = 0;
-    if (a.terms == 0) {
-        output << "0";
-        return output;
-    }
    
     for (int i = 0; i < a.terms; i++) {
-        //處理連接的正負號
-        if ((i > 0) && a.termArray[i].coef > 0 &&temp!=i) output << "+";//如果是第一項係數則不需要加上正號
-        else if (a.termArray[i].coef < 0 && temp != i) output << "-";
-        //印出係數的數字,使用abs 取絕對值去除多餘的負號)
-        if (abs(a.termArray[i].coef) != 0) {
-            output << abs(a.termArray[i].coef);
-        }
-        else {
+        if (a.termArray[i].coef == 0) {//如果係數是 0，直接計數並跳過這一項。
             temp++;
+            continue;
         }
-        
-        //判斷指數是否大於0
-        if (a.termArray[i].exp > 0 && abs(a.termArray[i].coef) != 0) {
+        //處理連接的正負號
+        if (First) {//判斷前面有沒有印出東西(是不是0)
+            if (a.termArray[i].coef > 0) output << "+";//如果是第一項係數則不需要加上正號
+            else if (a.termArray[i].coef < 0) output << "-";
+        }
+        else {//如果前面沒有印出東西(為0)且係數為負，需補上負號
+            if (a.termArray[i].coef < 0) output << "-";
+            First = true;
+        }
+        //印出係數的數字,使用abs 取絕對值去除多餘的負號)
+        output << abs(a.termArray[i].coef);
+       
+        //判斷指數是否大於0,如果指數<0則切換輸出樣式
+        if (a.termArray[i].exp > 0) {
             output << "x^" << a.termArray[i].exp;
         }
-        else if (a.termArray[i].exp < 0 && abs(a.termArray[i].coef) != 0) {
+        else if (a.termArray[i].exp < 0) {
             output << "/" << "x^" << abs(a.termArray[i].exp);
         }
+    }
+    if (temp == a.terms) {//迴圈全部跑完後，檢查是不是每一項都是 0
+        output << "0";
     }
     return output;
 }
