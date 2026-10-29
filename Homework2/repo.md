@@ -256,14 +256,10 @@ a(x)=3x^3+2x^2+5 b(x)=-3x^3
 
 函式 `Polynomial Mulit (Polynomial poly);` ->
 多項式相乘後的總項數 aPos*bPos,所以使巢狀迴圈for-for,使用前面所寫的Add 函式把每部分相乘的項式相加(運用 `c=c.Add(temp)` 類似 `c=c+temp`)。(如下圖三)
-圖三:
+#### 圖三:
 
-| | temp設回初值 | 丟入物件temp | `c=c.Add(temp)` | temp設回初值 | 丟入物件temp | `c=c.Add(temp)` |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| $(2x^2+x+1)(x+1)$ | | | | | | |
-| $2x^3+2x^2$ | $x^2+x$ | | | | | |
-| ↳物件 <br> Coef 2 2 <br> exp 3 2 | ↳物件 <br> Coef 1 1 <br> exp 2 1 | ↳物件 <br> Coef 2 3 2 1 <br> exp 3 2 1 1 | | | | |
-| 最終 $2x^3+3x^2+2x+1$ | | | | | | |
+![image alt](https://github.com/41443122LinRuiYan/Homework/blob/6d63ad515b7067ce730cdeb0d9e2f577f08f6b06/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
+
 
 函式 `float Eval(float f);` ->
 設定初值 `c=0`;
