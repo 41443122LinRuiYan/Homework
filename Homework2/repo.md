@@ -268,7 +268,7 @@ b(x) = -3x^3
 
 多項式相乘後的總項數為 aPos * bPos，所以使用巢狀迴圈 (for-for)，並使用前面所寫的 Add 函式把每部分相乘的項式相加（運用 c = c.Add(temp)，類似 c = c + temp）。
 
-圖三：
+####圖三：
 
 ![image alt](Homework2/圖片三.jpg)
 
