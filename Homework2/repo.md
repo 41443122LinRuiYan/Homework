@@ -213,8 +213,8 @@ $ .\Polynomial.exe
 
 申論及開發報告
 類別 Polynomial 函式的開發細節:
-
-1. `函式void NewTerm(const float theCoeff, const int theExp);`->
+ 
+1. ` 函式void NewTerm(const float theCoeff, const int theExp); `->
 `if (terms == capacity)` 利用此段程式檢測空間是否充足
 `capacity *= 2;` 使termArray的容量加倍
 `Term* temp = new Term [capacity];` 定義新的動態空間
