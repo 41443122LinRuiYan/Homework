@@ -205,13 +205,13 @@ int main(void) {
 $ g++ Polynomial.cpp -std=c++17 -o Polynomial.exe
 $ .\Polynomial.exe
 
-結論
+##### 結論
 1. 程式能夠存入多項式的係數與指數。
 2. 程式能夠進行加法以及乘法。
 3. 程式能夠輸入數值f帶入多項式a(x)。
 4. 此程式輸入多載運算子,不可判別輸入為2x^2+x+1,如果需要判別此種輸入需引入<string>與 <sstream>來幫助我們重新改寫輸入多載運算子。
 
-申論及開發報告
+##### 申論及開發報告
 類別 Polynomial 函式的開發細節
 
 1. 函式 void NewTerm(const float theCoeff, const int theExp);
@@ -268,10 +268,8 @@ b(x) = -3x^3
 
 多項式相乘後的總項數為 aPos * bPos，所以使用巢狀迴圈 (for-for)，並使用前面所寫的 Add 函式把每部分相乘的項式相加（運用 c = c.Add(temp)，類似 c = c + temp）。
 
-#### 圖三：
-```
+##### 圖三：
 <img width="580" height="805" alt="image" src="https://github.com/user-attachments/assets/282e7a8d-f079-40cf-979d-3f487a8f602c" />
-```
 
 4. 函式 float Eval(float f);
 
