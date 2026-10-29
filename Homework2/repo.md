@@ -214,57 +214,57 @@ $ .\Polynomial.exe
 申論及開發報告
 類別 Polynomial 函式的開發細節
 
-1. 函式 `void NewTerm(const float theCoeff, const int theExp);`
+1. 函式 void NewTerm(const float theCoeff, const int theExp);
 
 此函式主要處理新增多項式項目的邏輯與動態陣列的擴充：
 
-* `if (terms == capacity)`：利用此段程式檢測空間是否充足。
+* if (terms == capacity)：利用此段程式檢測空間是否充足。
 
-* `capacity *= 2;`：使 `termArray` 的容量加倍。
+* capacity *= 2;`：使 `termArray 的容量加倍。
 
-* `Term* temp = new Term[capacity];`：定義新的動態空間。
+* Term* temp = new Term[capacity];：定義新的動態空間。
 
-* `copy(termArray, termArray + terms, temp);`：把舊陣列內容複製到新陣列。
+* copy(termArray, termArray + terms, temp);：把舊陣列內容複製到新陣列。
 
-* `delete[] termArray;`：釋放舊的陣列記憶體。
+* delete[] termArray;：釋放舊的陣列記憶體。
 
-* `termArray = temp;`：把新的記憶體位址指向原陣列。
+* termArray = temp;：把新的記憶體位址指向原陣列。
 
-* `termArray[terms].coef = theCoeff;`：把係數傳入係數陣列。
+* termArray[terms].coef = theCoeff;：把係數傳入係數陣列。
 
-* `termArray[terms++].exp = theExp;`：把指數傳入指數陣列後，把 `terms` 加 `1`。
+* termArray[terms++].exp = theExp;：把指數傳入指數陣列後，把 terms 加 1。
 
-2. 函式 `Polynomial Add(Polynomial poly);`
+2. 函式 Polynomial Add(Polynomial poly);
 
 此函式處理兩個多項式的相加：
 
-* **`while` 迴圈**：當 `a` 和 `b` 的 `terms` 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
+* **while 迴圈**：當 a 和 b 的 terms 其中一個走訪完時結束。代表多項式較短的一方會讓此迴圈結束。
 
-* **`if` 條件**：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 `c`。
+* **if 條件**：當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
 
-* **`else if` 條件**：判斷是否 `(*this)` 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 `c`。
+* **else if 條件**：判斷是否 `(*this)` 的指數小於 `b(x)`，如果小於，則把此項係數與指數加進物件 c。
 
-* **`else` 條件**：判斷是否 `(*this)` 的指數大於 `b(x)`，如果大於，則把此項係數與指數加進物件 `c`。
+* **else 條件**：判斷是否 `(*this)` 的指數大於 b(x)，如果大於，則把此項係數與指數加進物件 c。
 
 接著處理剩餘項目：因多項式較短一方使 `while` 迴圈提前結束，須將所剩下的項加入物件。
 
 範例說明 (Ex)
 
 假設有兩個多項式：
-`a(x) = 3x^3 + 2x^2 + 5`
-`b(x) = -3x^3`
+a(x) = 3x^3 + 2x^2 + 5
+b(x) = -3x^3
 
-1. 當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 `c`。
+1. 當指數一樣時，係數相加。如果此項係數為零，則不把此項列入物件 c。
 
-2. 因 `bPos == 1` 所以跳出迴圈。
+2. 因 bPos == 1 所以跳出迴圈。
 
-3. `A` (`*this`) 還有剩下的項（`2x^2` 和 `5`）還沒處理。
+3. A (*this) 還有剩下的項（2x^2 和 5）還沒處理。
 
-4. 程式往下走，進入第一個 `for` 迴圈（`for (; aPos < terms; aPos++)`），把 `A` 剩下的 `2x^2` 跟 `5` 直接加進結果多項式 `c` 裡面。
+4. 程式往下走，進入第一個 for 迴圈（for (; aPos < terms; aPos++)），把 A 剩下的 2x^2 跟 5 直接加進結果多項式 c 裡面。
 
-5. 第二個 `for` 迴圈不滿足條件，直接跳過。
+5. 第二個 for 迴圈不滿足條件，直接跳過。
 
-## 3. 函式 `Polynomial Mulit(Polynomial poly);`
+3. 函式 Polynomial Mulit(Polynomial poly);
 
 多項式相乘後的總項數為 `aPos * bPos`，所以使用巢狀迴圈 (`for-for`)，並使用前面所寫的 `Add` 函式把每部分相乘的項式相加（運用 `c = c.Add(temp)`，類似 `c = c + temp`）。
 
@@ -272,34 +272,34 @@ $ .\Polynomial.exe
 
 ![image alt](https://github.com/41443122LinRuiYan/Homework/blob/6d63ad515b7067ce730cdeb0d9e2f577f08f6b06/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
 
-4. 函式 `float Eval(float f);`
+4. 函式 float Eval(float f);
 
 此函式用於計算多項式代入數值後的結果：
 
-1. 設定初值 `c = 0;`
+1. 設定初值 c = 0;
 
-2. 運用 `for` 迴圈走訪 `(*this)` 的每一項。
+2. 運用 for 迴圈走訪 `(*this)` 的每一項。
 
-3. 運用 `<cmath>` 裡的 `pow` 來解決次方問題。
+3. 運用 <cmath> 裡的 pow 來解決次方問題。
 
-4. 用 `c += (termArray[i].coef * pow(f, termArray[i].exp));` 儲存累加結果。
+4. 用 c += (termArray[i].coef * pow(f, termArray[i].exp)); 儲存累加結果。
 
 5. 回傳結果。
 
 5. 多載運算子的細節
 
-輸入 `>>` 運算子
+輸入 >> 運算子
 
 1. 先問使用者要輸入幾項。
 
 2. 再依需輸入此項係數與指數，以空格隔開。
 
-3. 且把輸入的數值存進物件 `a`。
+3. 且把輸入的數值存進物件 a。
 
-輸出 `<<` 運算子
+輸出 << 運算子
 
 1. 先問使用者要輸入幾項。
 
 2. 再依需輸入此項係數與指數，以空格隔開。
 
-3. 且把輸入的數值存進物件 `a`。
+3. 且把輸入的數值存進物件 a。
