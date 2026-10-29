@@ -104,8 +104,10 @@ Polynomial Polynomial::Mulit(Polynomial b) {
     Polynomial c;//相乘後的多項式
     //多項式相乘後的總項數為aPos*bPos,所以使用for-for,使用前面所寫的Add 函式把每部分相乘的多項式相加
     for (int aPos = 0; aPos < terms; aPos++) {//走訪目前多項式(*this)的每一項
-        Polynomial temp;//設回初值
+        
         for (int bPos = 0; bPos < b.terms; bPos++) {//走訪目前多項式b(x)的每一項
+            if (b.termArray[bPos].coef == 0) continue;//如果係數為0則跳過此次迴圈，否則多項式結構可能會壞例如(5)(3x^2+0x^1+5)
+            Polynomial temp;//設回初值
             float cf = termArray[aPos].coef * b.termArray[bPos].coef;
             int ep = termArray[aPos].exp + b.termArray[bPos].exp;
             if (cf != 0) {//如果係數是0,不執行
@@ -199,8 +201,8 @@ int main(void) {
     cout << "a(x)帶入" << f << "得:" << e << endl;
     cout << "相加結果 a(x)+b(x)=" << c << endl;
     cout << "相乘結果 a(x)*b(x)=" << d << endl;
-    cout << "相加結果帶入 c(x)=" << g << endl;
-    cout << "相乘結果帶入 d(x)=" << h << endl;
+    cout << "相加結果帶入f=" << g << endl;
+    cout << "相乘結果帶入f=" << h << endl;
     return 0;
 }
 ```
