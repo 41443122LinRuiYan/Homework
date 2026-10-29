@@ -126,8 +126,8 @@ float Polynomial::Eval(float f) {
     }
     return c;
 }
-
 istream& operator>>(istream& input, Polynomial& a) {
+    Polynomial b;
     int numTerms;
     cout << "請輸入多項式項數:";
     input >> numTerms;
@@ -137,6 +137,7 @@ istream& operator>>(istream& input, Polynomial& a) {
         cout << "輸入第" << i + 1 << "項的係數與指數(用空格隔開):";
         input >> coef >> exp;
         a.NewTerm(coef, exp);
+        
     }
     return input;
 }
@@ -151,15 +152,15 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
             continue;
         }
         //處理連接的正負號
-        if (First) {//判斷前面有沒有印出東西(是不是0)
-            if (a.termArray[i].coef > 0) output << "+";//如果是第一項係數則不需要加上正號
+        if (First) {//判斷前面有沒有印出東西(前項係數是不是0)
+            if (a.termArray[i].coef > 0) output << "+";
             else if (a.termArray[i].coef < 0) output << "-";
         }
         else {//如果前面沒有印出東西(為0)且係數為負，需補上負號
             if (a.termArray[i].coef < 0) output << "-";
             First = true;
         }
-        //印出係數的數字,使用abs 取絕對值去除多餘的負號
+        //印出係數的數字,使用abs取絕對值去除多餘的負號
         output << abs(a.termArray[i].coef);
        
         //判斷指數是否大於0,如果指數<0則切換輸出樣式
@@ -179,7 +180,9 @@ ostream& operator<<(ostream& output, const Polynomial& a) {
 int main(void) {
     Polynomial a, b, c, d;
     float e, f, g, h;
-    cout << "--- 輸入a(x)多項式---" << endl;
+    cout << "***此程式只能輸入整理過後的多項式，否則輸出的多項式格式有可能跑出多筆相同次方相加的樣式，但並不影響帶入值運算的結果***" << endl;
+    cout << endl;
+    cout << "--- 輸入a(x)多項式:---" << endl;
     cin >> a;
     cout << "a(x)=" << a << endl;
     cout << endl;
