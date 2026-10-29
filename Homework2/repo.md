@@ -270,7 +270,7 @@ b(x) = -3x^3
 
 圖三：
 
-![image alt](https://github.com/41443122LinRuiYan/Homework/blob/b9805d9f5e07608c3d1f14cce3d90376cd088bff/Homework2/%E5%9C%96%E7%89%87%E4%B8%89.jpg)
+![image alt](Homework2/圖片三.jpg)
 
 4. 函式 float Eval(float f);
 
