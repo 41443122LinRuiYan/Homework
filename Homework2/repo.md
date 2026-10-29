@@ -240,6 +240,8 @@ $ .\Polynomial.exe
 此外這個程式只能輸入整理過後的多項式，否則輸出的多項式格式有可能跑出多筆相同次方相加的樣式。
 可以改寫NewTerm函式把**同類項合併**，但就算不進行**同類項合併**經過數學運算，他們的帶入解也還是正確的。
 - *多項式格式有可能跑出多筆相同次方相加的形式例圖如下*
+- <img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/ef233561-7a66-4c04-81de-8a303f91cbcc" />
+
 
 #### 申論及開發報告
 **一.類別 Polynomial 函式的開發細節**
