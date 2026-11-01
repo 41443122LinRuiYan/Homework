@@ -221,7 +221,13 @@ int main(void) {
 | operator<< | $O(m)$ 單迴圈  | $O(1)$:回傳的 output |
 #### 效能量測
 取用下圖執行結果的量測:
-
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/b3451632-7f20-4771-b81f-fb3322b1c19b" />
+GPU使用量如下圖:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a902d15d-ae9c-4642-8357-97a6928728c1" />
+GPU使用率,CPU使用率，處理序記憶體如下圖:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a65ce028-d6e7-4252-9a7c-65ca5f5c2619" />
+畫面格時間(FPS)如下圖:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b07360f1-19b3-4d74-917f-2768edbe5897" />
 
 #### 測試與驗證
 ##### 測試案例
